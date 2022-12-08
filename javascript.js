@@ -1,3 +1,5 @@
+/* eslint-disable default-case */
+/* eslint-disable no-alert */
 // Random number between 1 and 3 for computer choice 
 // rock paper or scissors 
 let computerChoice;
@@ -33,10 +35,10 @@ function playRound(computerChoice, playerChoice) {
   if (computerChoice === 'rock') {
     switch (playerChoice) {
       case 'rock':
-        alert('both chose rock! it\'s a tie!)
+        alert('both chose rock! it\'s a tie!');
         break;
       case 'paper':
-        alert('paper beats rock! you win!')
+        alert('paper beats rock! you win!');
         break;
       case 'scissors':
         alert('rock beats scissors. you lose :(');
@@ -51,10 +53,24 @@ function playRound(computerChoice, playerChoice) {
         alert('both chose paper! it\'s a tie!');
         break;
       case 'scissors':
-        alert('scissors beats paper! you win!'); 
+        alert('scissors beats paper! you win!');
+        break;
+    }
+  } else {
+    switch (playerChoice) {
+      case 'rock':
+        alert('rock beats scissors! you win!');
+        break;
+      case 'paper':
+        alert('scissors beats paper. you lose :(');
+        break;
+      case 'scissors':
+        alert('both chose scissors! it\'s a tie!');
         break;
     }
   }
 }
+
+
 
 
