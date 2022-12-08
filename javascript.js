@@ -6,6 +6,10 @@
 let computerChoice;
 let playerChoice;
 
+let playerScore = 0;
+let computerScore = 0;
+
+
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
 
@@ -19,8 +23,9 @@ function getComputerChoice() {
 }
 
 // Uses a prompt to get the player choice;
-// Todo: Make sure player input is a string and it matches
-// one of the three possible choices!!!!
+// Makes sure that the prompt is not case sensitive
+// Will make alert if the input does not match one of the 
+// game options and will re-call itself after;
 
 function getPlayerChoice() {
   playerChoice = prompt('choose rock, paper, or scissors :)');
@@ -32,7 +37,6 @@ function getPlayerChoice() {
   }
 }
 
-
 // Function that will use playerChoice and computerChoice 
 // to play a round of the game
 
@@ -40,40 +44,50 @@ function playRound() {
   if (computerChoice === 'rock') {
     switch (playerChoice) {
       case 'rock':
-        alert('both chose rock! it\'s a tie!');
+        console.log('both chose rock! it\'s a tie!');
         break;
       case 'paper':
-        alert('paper beats rock! you win!');
+        console.log('paper beats rock! you win!');
         break;
       case 'scissors':
-        alert('rock beats scissors. you lose :(');
+        console.log('rock beats scissors. you lose :(');
         break;
     }
   } else if (computerChoice === 'paper') {
     switch (playerChoice) {
       case 'rock':
-        alert('paper beats rock. you lose :(');
+        console.log('paper beats rock. you lose :(');
         break;
       case 'paper':
-        alert('both chose paper! it\'s a tie!');
+        console.log('both chose paper! it\'s a tie!');
         break;
       case 'scissors':
-        alert('scissors beats paper! you win!');
+        console.log('scissors beats paper! you win!');
         break;
     }
   } else {
     switch (playerChoice) {
       case 'rock':
-        alert('rock beats scissors! you win!');
+        console.log('rock beats scissors! you win!');
         break;
       case 'paper':
-        alert('scissors beats paper. you lose :(');
+        console.log('scissors beats paper. you lose :(');
         break;
       case 'scissors':
-        alert('both chose scissors! it\'s a tie!');
+        console.log('both chose scissors! it\'s a tie!');
         break;
     }
   }
 }
 
-playRound(getPlayerChoice(), getComputerChoice());
+// Create a function that calls playRound and updates a score depending
+// on the outcome;
+// Will keep track until the player or computer score reaches 5;
+
+function playGame() {
+  do {
+    playRound(getPlayerChoice(), getComputerChoice());
+  } while (playerChoice < 5 || computerChoice < 5);
+}
+
+playGame();
