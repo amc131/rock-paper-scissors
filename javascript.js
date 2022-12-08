@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable default-case */
 /* eslint-disable no-alert */
 // Random number between 1 and 3 for computer choice
@@ -5,6 +6,7 @@
 
 let computerChoice;
 let playerChoice;
+const scoreMessage = `player score: ${playerScore}  computer score: ${computerScore}`;
 
 let playerScore = 0;
 let computerScore = 0;
@@ -87,7 +89,7 @@ function playRound() {
 function playGame() {
   do {
     playRound(getPlayerChoice(), getComputerChoice());
-  } while (playerChoice < 5 || computerChoice < 5);
+  } while (playerChoice < 5 && computerChoice < 5);
 }
 
 playGame();
