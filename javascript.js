@@ -7,18 +7,17 @@
 let computerChoice;
 let playerChoice;
 let playerScore = 0;
-let computerScore = 0; 
+let computerScore = 0;
 
 function playerWins() {
   playerScore++;
   console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
-};
+}
 
 function computerWins() {
   computerScore++;
   console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
 }
-
 
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
@@ -55,51 +54,45 @@ function playRound() {
     switch (playerChoice) {
       case 'rock':
         console.log('both chose rock! it\'s a tie!');
-        console.log(currentScore);
+        console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
         break;
       case 'paper':
         console.log('paper beats rock! you win!');
-        playerScore++;
-        console.log(currentScore);
+        playerWins();
         break;
       case 'scissors':
         console.log('rock beats scissors. you lose :(');
-        computerScore++;
-        console.log(currentScore);
+        computerWins();
         break;
     }
   } else if (computerChoice === 'paper') {
     switch (playerChoice) {
       case 'rock':
         console.log('paper beats rock. you lose :(');
-        computerScore++;
-        console.log(currentScore);
+        computerWins();
         break;
       case 'paper':
         console.log('both chose paper! it\'s a tie!');
-        console.log(currentScore);
+        console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
         break;
       case 'scissors':
         console.log('scissors beats paper! you win!');
-        playerScore++;
-        console.log(currentScore);
+        playerWins();
         break;
     }
   } else {
     switch (playerChoice) {
       case 'rock':
         console.log('rock beats scissors! you win!');
-        playerScore++;
-        console.log(currentScore);
+        playerWins();
         break;
       case 'paper':
         console.log('scissors beats paper. you lose :(');
-        computerScore++;
-        console.log(currentScore);
+        computerWins();
         break;
       case 'scissors':
         console.log('both chose scissors! it\'s a tie!');
-        console.log(currentScore);
+        console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
         break;
     }
   }
@@ -110,9 +103,11 @@ function playRound() {
 // Will keep track until the player or computer score reaches 5;
 
 function playGame() {
-while (playerScore < 5 || computerScore < 5) {
-  playRound(getPlayerChoice(), getComputerChoice());
-  }
+  while (playerScore < 5 && computerScore < 5) {
+    playRound(getPlayerChoice(), getComputerChoice());
+  } 
+  playerScore === 5 ? alert('you won the game!!! refresh the page to play again') 
+  : alert('you lost the game. refresh the page to play again');
 }
 
 playGame();
