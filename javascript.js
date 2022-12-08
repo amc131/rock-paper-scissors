@@ -1,15 +1,14 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-console */
 /* eslint-disable default-case */
 /* eslint-disable no-alert */
 // Random number between 1 and 3 for computer choice
 // rock paper or scissors;
-
-let computerChoice;
-let playerChoice;
-const scoreMessage = `player score: ${playerScore}  computer score: ${computerScore}`;
-
 let playerScore = 0;
 let computerScore = 0;
+let computerChoice;
+let playerChoice;
+const currentScore = `player score: ${playerScore}  computer score: ${computerScore}`;
 
 
 function getComputerChoice() {
@@ -47,36 +46,51 @@ function playRound() {
     switch (playerChoice) {
       case 'rock':
         console.log('both chose rock! it\'s a tie!');
+        console.log(currentScore);
         break;
       case 'paper':
         console.log('paper beats rock! you win!');
+        playerScore++;
+        console.log(currentScore);
         break;
       case 'scissors':
         console.log('rock beats scissors. you lose :(');
+        computerScore++;
+        console.log(currentScore);
         break;
     }
   } else if (computerChoice === 'paper') {
     switch (playerChoice) {
       case 'rock':
         console.log('paper beats rock. you lose :(');
+        computerScore++;
+        console.log(currentScore);
         break;
       case 'paper':
         console.log('both chose paper! it\'s a tie!');
+        console.log(currentScore);
         break;
       case 'scissors':
         console.log('scissors beats paper! you win!');
+        playerScore++;
+        console.log(currentScore);
         break;
     }
   } else {
     switch (playerChoice) {
       case 'rock':
         console.log('rock beats scissors! you win!');
+        playerScore++;
+        console.log(currentScore);
         break;
       case 'paper':
         console.log('scissors beats paper. you lose :(');
+        computerScore++;
+        console.log(currentScore);
         break;
       case 'scissors':
         console.log('both chose scissors! it\'s a tie!');
+        console.log(currentScore);
         break;
     }
   }
@@ -91,5 +105,12 @@ function playGame() {
     playRound(getPlayerChoice(), getComputerChoice());
   } while (playerChoice < 5 && computerChoice < 5);
 }
+// playRound(getPlayerChoice(), getComputerChoice());
+// console.log(typeof playerScore);
 
-playGame();
+function testFunction() {
+  playerScore += 5; 
+  console.log(playerScore);
+}
+
+testFunction();
