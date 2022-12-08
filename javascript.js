@@ -1,7 +1,8 @@
 /* eslint-disable default-case */
 /* eslint-disable no-alert */
-// Random number between 1 and 3 for computer choice 
-// rock paper or scissors 
+// Random number between 1 and 3 for computer choice
+// rock paper or scissors;
+
 let computerChoice;
 let playerChoice;
 
@@ -24,6 +25,11 @@ function getComputerChoice() {
 function getPlayerChoice() {
   playerChoice = prompt('choose rock, paper, or scissors :)');
   playerChoice.toLowerCase();
+
+  if (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
+    alert('sorry, you have to write "rock", "paper", or "scissors"');
+    getPlayerChoice();
+  }
 }
 
 
