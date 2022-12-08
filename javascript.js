@@ -30,7 +30,15 @@ getPlayerChoice();
 // to play a round of the game
 
 function playRound(computerChoice, playerChoice) {
-
+  if (computerChoice === 'rock') {
+    switch (playerChoice) {
+      case 'rock':
+        alert('both chose rock! it\'s a tie!)
+        break;
+      case 'paper':
+        alert('paper beats rock! you win!')
+    }
+  }
 }
 
-console.log(playerChoice);
+
