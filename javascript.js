@@ -37,6 +37,22 @@ function playRound(computerChoice, playerChoice) {
         break;
       case 'paper':
         alert('paper beats rock! you win!')
+        break;
+      case 'scissors':
+        alert('rock beats scissors. you lose :(');
+        break;
+    }
+  } else if (computerChoice === 'paper') {
+    switch (playerChoice) {
+      case 'rock':
+        alert('paper beats rock. you lose :(');
+        break;
+      case 'paper':
+        alert('both chose paper! it\'s a tie!');
+        break;
+      case 'scissors':
+        alert('scissors beats paper! you win!'); 
+        break;
     }
   }
 }
