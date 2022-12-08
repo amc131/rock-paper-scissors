@@ -23,14 +23,14 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
   playerChoice = prompt('choose rock, paper, or scissors :)');
+  playerChoice.toLowerCase();
 }
 
 
 // Function that will use playerChoice and computerChoice 
 // to play a round of the game
 
-function playRound(a, b) {
-
+function playRound() {
   if (computerChoice === 'rock') {
     switch (playerChoice) {
       case 'rock':
@@ -71,8 +71,3 @@ function playRound(a, b) {
 }
 
 playRound(getPlayerChoice(), getComputerChoice());
-
-
-
-
-
