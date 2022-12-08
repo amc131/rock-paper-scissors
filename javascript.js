@@ -4,11 +4,20 @@
 /* eslint-disable no-alert */
 // Random number between 1 and 3 for computer choice
 // rock paper or scissors;
-let playerScore = 0;
-let computerScore = 0;
 let computerChoice;
 let playerChoice;
-const currentScore = `player score: ${playerScore}  computer score: ${computerScore}`;
+let playerScore = 0;
+let computerScore = 0; 
+
+function playerWins() {
+  playerScore++;
+  console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
+};
+
+function computerWins() {
+  computerScore++;
+  console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
+}
 
 
 function getComputerChoice() {
@@ -101,16 +110,9 @@ function playRound() {
 // Will keep track until the player or computer score reaches 5;
 
 function playGame() {
-  do {
-    playRound(getPlayerChoice(), getComputerChoice());
-  } while (playerChoice < 5 && computerChoice < 5);
-}
-// playRound(getPlayerChoice(), getComputerChoice());
-// console.log(typeof playerScore);
-
-function testFunction() {
-  playerScore += 5; 
-  console.log(playerScore);
+while (playerScore < 5 || computerScore < 5) {
+  playRound(getPlayerChoice(), getComputerChoice());
+  }
 }
 
-testFunction();
+playGame();
