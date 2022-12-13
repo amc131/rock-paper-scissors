@@ -9,6 +9,15 @@ let playerChoice;
 let playerScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    playerChoice = button.className;
+    console.log(playerChoice);
+  });
+});
+
 function playerWins() {
   playerScore++;
   console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
@@ -102,12 +111,12 @@ function playRound() {
 // on the outcome;
 // Will keep track until the player or computer score reaches 5;
 
-function playGame() {
-  while (playerScore < 5 && computerScore < 5) {
-    playRound(getPlayerChoice(), getComputerChoice());
-  } 
-  playerScore === 5 ? alert('you won the game!!! refresh the page to play again') 
-  : alert('you lost the game. refresh the page to play again');
-}
+// function playGame() {
+//   while (playerScore < 5 && computerScore < 5) {
+//     playRound(getPlayerChoice(), getComputerChoice());
+//   } 
+//   playerScore === 5 ? alert('you won the game!!! refresh the page to play again') 
+//   : alert('you lost the game. refresh the page to play again');
+// }
 
 playGame();
