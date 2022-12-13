@@ -8,6 +8,9 @@ let computerChoice;
 let playerChoice;
 let playerScore = 0;
 let computerScore = 0;
+const scoreboard = document.querySelector('.scoreboard');
+const gameText = document.querySelector('.game-text');
+const message = document.querySelector('.message');
 
 const buttons = document.querySelectorAll('button');
 
