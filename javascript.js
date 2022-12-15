@@ -10,6 +10,7 @@ let playerScore = 0;
 let computerScore = 0;
 let message = 'Click a Button to Play';
 const scoreboard = document.querySelector('.scoreboard');
+const buttons = document.querySelectorAll('button');
 
 const playerDisplay = document.createElement('div');
 playerDisplay.classList.add('.left');
@@ -26,17 +27,21 @@ computerDisplay.classList.add('.right');
 computerDisplay.textContent = `Computer: ${computerScore}`;
 scoreboard.appendChild(computerDisplay);
 
-
-const buttons = document.querySelectorAll('button');
-
 function playerWins() {
   playerScore++;
-  console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
+  playerDisplay.textContent = `Player: ${playerScore}`;
+  scoreboard.appendChild(playerDisplay);
 }
 
 function computerWins() {
   computerScore++;
-  console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
+  computerDisplay.textContent = `Computer: ${computerScore}`;
+  scoreboard.appendChild(computerDisplay);
+}
+
+function middleDisplayUpdate() {
+  middleDisplay.textContent = message;
+  scoreboard.appendChild(middleDisplay);
 }
 
 function getComputerChoice() {
@@ -51,64 +56,81 @@ function getComputerChoice() {
   }
 }
 
-buttons.forEach((button) => {
-  button.addEventListener('click', () => {
-    playerChoice = button.className;
-    getComputerChoice();
-  });
-});
-
 // Function that will use playerChoice and computerChoice 
 // to play a round of the game
 
 function playRound() {
+  if (playerScore === 5) {
+    message = 'You won!!!';
+    middleDisplayUpdate();
+  }
+
+  if (computerScore === 5) {
+    message = 'You lost. Better luck next time!';
+    middleDisplayUpdate();
+  }
+
   if (computerChoice === 'rock') {
     switch (playerChoice) {
       case 'rock':
-        console.log('both chose rock! it\'s a tie!');
-        console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
+        message = 'both chose rock! it\'s a tie!';
+        middleDisplayUpdate();
         break;
       case 'paper':
-        console.log('paper beats rock! you win!');
+        message = 'paper beats rock! you win!';
         playerWins();
+        middleDisplayUpdate();
         break;
       case 'scissors':
-        console.log('rock beats scissors. you lose :(');
+        message = 'rock beats scissors. you lose :(';
         computerWins();
+        middleDisplayUpdate();
         break;
     }
   } else if (computerChoice === 'paper') {
     switch (playerChoice) {
       case 'rock':
-        console.log('paper beats rock. you lose :(');
+        message = 'paper beats rock. you lose :(';
+        middleDisplayUpdate();
         computerWins();
         break;
       case 'paper':
-        console.log('both chose paper! it\'s a tie!');
-        console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
+        message = 'both chose paper! it\'s a tie!';
+        middleDisplayUpdate();
         break;
       case 'scissors':
-        console.log('scissors beats paper! you win!');
+        message = 'scissors beats paper! you win!';
         playerWins();
+        middleDisplayUpdate();
         break;
     }
   } else {
     switch (playerChoice) {
       case 'rock':
-        console.log('rock beats scissors! you win!');
+        message = 'rock beats scissors! you win!';
         playerWins();
+        middleDisplayUpdate();
         break;
       case 'paper':
-        console.log('scissors beats paper. you lose :(');
+        message = 'scissors beats paper. you lose :(';
         computerWins();
+        middleDisplayUpdate();
         break;
       case 'scissors':
-        console.log('both chose scissors! it\'s a tie!');
-        console.log(`player score: ${playerScore}  computer score: ${computerScore}`);
+        message = 'both chose scissors! it\'s a tie!';
+        middleDisplayUpdate();
         break;
     }
   }
 }
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    playerChoice = button.className;
+    getComputerChoice();
+    playRound();
+  });
+});
 
 // Create a function that calls playRound and updates a score depending
 // on the outcome;
