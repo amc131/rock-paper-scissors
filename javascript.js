@@ -8,9 +8,6 @@ let computerChoice;
 let playerChoice;
 let playerScore = 0;
 let computerScore = 0;
-const scoreboard = document.querySelector('.scoreboard');
-const gameText = document.querySelector('.game-text');
-const message = document.querySelector('.message');
 
 const buttons = document.querySelectorAll('button');
 
@@ -42,15 +39,6 @@ function getComputerChoice() {
     computerChoice = 'scissors';
   }
 }
-
-// Uses a prompt to get the player choice;
-// Makes sure that the prompt is not case sensitive
-// Will make alert if the input does not match one of the 
-// game options and will re-call itself after;
-
-function getPlayerChoice() {
-  playerChoice = prompt('choose rock, paper, or scissors :)');
-  playerChoice.toLowerCase();
 
   if (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
     alert('sorry, you have to write "rock", "paper", or "scissors"');
