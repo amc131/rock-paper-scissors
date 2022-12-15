@@ -8,15 +8,26 @@ let computerChoice;
 let playerChoice;
 let playerScore = 0;
 let computerScore = 0;
+let message = 'Click a Button to Play';
+const scoreboard = document.querySelector('.scoreboard');
+
+const playerDisplay = document.createElement('div');
+playerDisplay.classList.add('.left');
+playerDisplay.textContent = `Player: ${playerScore}`;
+scoreboard.appendChild(playerDisplay);
+
+const middleDisplay = document.createElement('div');
+middleDisplay.classList.add('.middle');
+middleDisplay.textContent = message;
+scoreboard.appendChild(middleDisplay);
+
+const computerDisplay = document.createElement('div');
+computerDisplay.classList.add('.right');
+computerDisplay.textContent = `Computer: ${computerScore}`;
+scoreboard.appendChild(computerDisplay);
+
 
 const buttons = document.querySelectorAll('button');
-
-buttons.forEach((button) => {
-  button.addEventListener('click', () => {
-    playerChoice = button.className;
-    console.log(playerChoice);
-  });
-});
 
 function playerWins() {
   playerScore++;
@@ -40,11 +51,12 @@ function getComputerChoice() {
   }
 }
 
-  if (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
-    alert('sorry, you have to write "rock", "paper", or "scissors"');
-    getPlayerChoice();
-  }
-}
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    playerChoice = button.className;
+    getComputerChoice();
+  });
+});
 
 // Function that will use playerChoice and computerChoice 
 // to play a round of the game
@@ -110,4 +122,4 @@ function playRound() {
 //   : alert('you lost the game. refresh the page to play again');
 // }
 
-playGame();
+// playGame();
