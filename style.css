@@ -1,10 +1,32 @@
 .scoreboard {
   display: flex;
-  justify-content: space-between;
-  font-size: 48px;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  font-size: 36px;
+  flex-basis: auto;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+
+.left {
+  order: -1;
 }
 
 .buttons {
   display: flex;
   justify-content: center;
+  gap: 75px;
+  margin-top: 45px;
+}
+
+.buttons > button {
+  font-size: 32px;
+  padding: 20px 48px
+}
+
+.message {
+  font-size: 24px;
+  text-align: center;
+  padding: 32px;
 }

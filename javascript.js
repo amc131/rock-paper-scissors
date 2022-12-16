@@ -1,29 +1,27 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-console */
-/* eslint-disable default-case */
-/* eslint-disable no-alert */
-// Random number between 1 and 3 for computer choice
-// rock paper or scissors;
 let computerChoice;
 let playerChoice;
 let playerScore = 0;
 let computerScore = 0;
-let message = 'Click a Button to Play';
 const scoreboard = document.querySelector('.scoreboard');
 const buttons = document.querySelectorAll('button');
+const gameMessage = document.querySelector('.game-message');
+
+const message = document.createElement('div');
+message.classList.add('message');
+gameMessage.appendChild(message);
 
 const playerDisplay = document.createElement('div');
-playerDisplay.classList.add('.left');
+playerDisplay.classList.add('left');
 playerDisplay.textContent = `Player: ${playerScore}`;
 scoreboard.appendChild(playerDisplay);
 
 const middleDisplay = document.createElement('div');
-middleDisplay.classList.add('.middle');
-middleDisplay.textContent = message;
+middleDisplay.classList.add('middle');
+middleDisplay.textContent = 'Click a Button to Play';
 scoreboard.appendChild(middleDisplay);
 
 const computerDisplay = document.createElement('div');
-computerDisplay.classList.add('.right');
+computerDisplay.classList.add('right');
 computerDisplay.textContent = `Computer: ${computerScore}`;
 scoreboard.appendChild(computerDisplay);
 
@@ -39,9 +37,9 @@ function computerWins() {
   scoreboard.appendChild(computerDisplay);
 }
 
-function middleDisplayUpdate() {
-  middleDisplay.textContent = message;
-  scoreboard.appendChild(middleDisplay);
+function messageUpdate(string) {
+  message.textContent = string;
+  gameMessage.appendChild(message);
 }
 
 function getComputerChoice() {
@@ -56,69 +54,64 @@ function getComputerChoice() {
   }
 }
 
-// Function that will use playerChoice and computerChoice 
-// to play a round of the game
+function winCondition() {
+  if (computerScore === 5) {
+    messageUpdate('You lost. Better luck next time.');
+  } else if (playerScore === 5) {
+    messageUpdate('You won!!!');
+  }
+}
 
 function playRound() {
-  if (playerScore === 5) {
-    message = 'You won!!!';
-    middleDisplayUpdate();
-  }
-
-  if (computerScore === 5) {
-    message = 'You lost. Better luck next time!';
-    middleDisplayUpdate();
-  }
-
   if (computerChoice === 'rock') {
     switch (playerChoice) {
       case 'rock':
-        message = 'both chose rock! it\'s a tie!';
-        middleDisplayUpdate();
+        messageUpdate('both chose rock! it\'s a tie!');
+        winCondition();
         break;
       case 'paper':
-        message = 'paper beats rock! you win!';
         playerWins();
-        middleDisplayUpdate();
+        messageUpdate('paper beats rock! you win!');
+        winCondition();
         break;
       case 'scissors':
-        message = 'rock beats scissors. you lose :(';
         computerWins();
-        middleDisplayUpdate();
+        messageUpdate('rock beats scissors. you lose :(');
+        winCondition();
         break;
     }
   } else if (computerChoice === 'paper') {
     switch (playerChoice) {
       case 'rock':
-        message = 'paper beats rock. you lose :(';
-        middleDisplayUpdate();
+        messageUpdate('paper beats rock. you lose :(');
         computerWins();
+        winCondition();
         break;
       case 'paper':
-        message = 'both chose paper! it\'s a tie!';
-        middleDisplayUpdate();
+        messageUpdate('both chose paper! it\'s a tie!');
+        winCondition();
         break;
       case 'scissors':
-        message = 'scissors beats paper! you win!';
         playerWins();
-        middleDisplayUpdate();
+        messageUpdate('scissors beats paper! you win!');
+        winCondition();
         break;
     }
   } else {
     switch (playerChoice) {
       case 'rock':
-        message = 'rock beats scissors! you win!';
         playerWins();
-        middleDisplayUpdate();
+        messageUpdate('rock beats scissors! you win!');
+        winCondition();
         break;
       case 'paper':
-        message = 'scissors beats paper. you lose :(';
         computerWins();
-        middleDisplayUpdate();
+        messageUpdate('scissors beats paper. you lose :(');
+        winCondition();
         break;
       case 'scissors':
-        message = 'both chose scissors! it\'s a tie!';
-        middleDisplayUpdate();
+        messageUpdate('both chose scissors! it\'s a tie!');
+        winCondition();
         break;
     }
   }
@@ -131,17 +124,3 @@ buttons.forEach((button) => {
     playRound();
   });
 });
-
-// Create a function that calls playRound and updates a score depending
-// on the outcome;
-// Will keep track until the player or computer score reaches 5;
-
-// function playGame() {
-//   while (playerScore < 5 && computerScore < 5) {
-//     playRound(getPlayerChoice(), getComputerChoice());
-//   } 
-//   playerScore === 5 ? alert('you won the game!!! refresh the page to play again') 
-//   : alert('you lost the game. refresh the page to play again');
-// }
-
-// playGame();
